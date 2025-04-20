@@ -3,6 +3,8 @@ using System.Collections;
 
 public class BrickScript : MonoBehaviour
 {
+    private MarioController marioController;
+    public GameObject brickParticles;
     private Rigidbody2D rb;
     private Vector2 originalPosition;
     public float bounceHeight = 0.2f;    // Altura máxima do "pulo" do bloco
@@ -17,15 +19,21 @@ public class BrickScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        foreach (ContactPoint2D contact in collision.contacts)
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Vector2 normal = contact.normal;
-            // Se a colisão ocorrer na face inferior do bloco (Mario bate de baixo)
-            if (Vector2.Dot(normal, Vector2.up) > 0.9f)
+            marioController = collision.gameObject.GetComponent<MarioController>();
+
+            foreach (ContactPoint2D contact in collision.contacts)
             {
-                Hit();
-                break;
+                Vector2 normal = contact.normal;
+                // Se a colisão ocorrer na face inferior do bloco (Mario bate de baixo)
+                if (Vector2.Dot(normal, Vector2.up) > 0.9f)
+                {
+                    Hit();
+                    break;
+                }
             }
+
         }
     }
 
@@ -33,8 +41,21 @@ public class BrickScript : MonoBehaviour
     {
         if (!isBouncing)
         {
-            StartCoroutine(Bounce());
+            if (marioController.isBig)
+            {
+                BreakBlock();
+            }
+            else
+            {
+                StartCoroutine(Bounce());
+            }
         }
+    }
+
+    void BreakBlock()
+    {
+        Instantiate(brickParticles, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 
     IEnumerator Bounce()

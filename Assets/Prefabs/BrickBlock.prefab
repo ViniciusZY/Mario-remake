@@ -175,5 +175,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0953cf5a6b8601141b38effe79083d86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  brickParticles: {fileID: 8647863518547192491, guid: 219c69f812703724bb8acdad0f403bb1, type: 3}
   bounceHeight: 0.8
   bounceDuration: 0.2

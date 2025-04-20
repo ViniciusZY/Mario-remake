@@ -11,6 +11,7 @@ public class MarioController : MonoBehaviour
 
     public float speed = 5f;
     public float jumpForce = 10f;
+    public bool isBig = false;
 
     private bool isGrounded;
     private bool isJumping;

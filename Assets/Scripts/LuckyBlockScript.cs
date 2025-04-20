@@ -3,14 +3,16 @@ using System.Collections;
 
 public class LuckyBlockScript : MonoBehaviour
 {
+    private Animator animator;
     private Rigidbody2D rb;
     private Vector2 originalPosition;
-    public float bounceHeight = 0.2f;    // Altura máxima do "pulo" do bloco
-    public float bounceDuration = 0.2f;  // Duração total da animação (subida e descida)
+    public float bounceHeight = 0.2f;
+    public float bounceDuration = 0.2f;
     private bool isBouncing = false;
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         originalPosition = transform.position;
     }
@@ -20,7 +22,7 @@ public class LuckyBlockScript : MonoBehaviour
         foreach (ContactPoint2D contact in collision.contacts)
         {
             Vector2 normal = contact.normal;
-            // Se a colisão ocorrer na face inferior do bloco (Mario bate de baixo)
+            // Se a colisão ocorrer na face inferior do bloco
             if (Vector2.Dot(normal, Vector2.up) > 0.9f)
             {
                 Hit();
@@ -33,6 +35,7 @@ public class LuckyBlockScript : MonoBehaviour
     {
         if (!isBouncing)
         {
+            animator.SetBool("wasHit", true);
             StartCoroutine(Bounce());
         }
     }
