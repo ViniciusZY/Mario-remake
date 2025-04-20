@@ -3,18 +3,28 @@ using Math = System.Math;
 
 public class EnemyController : MonoBehaviour
 {
+    private Transform transform;
+    private BoxCollider2D boxCollider;
+    private Animator animator;
+    private bool isDead = false;
     private Rigidbody2D rb;
     private float direction = -1;
-    public float speed = 2f;
+    public float speed = 1.8f;
 
     void Start()
     {
+        transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        animator = GetComponent<Animator>();
         rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocity.y);
+        animator.SetBool("isDead", false);
     }
 
     void Update()
     {
+        if (isDead) return;
+
         if (Math.Abs(rb.linearVelocity.x) < 0.1f)
         {
             direction *= -1;
@@ -22,5 +32,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-
+    public void Die()
+    {
+        isDead = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = 0;
+        boxCollider.enabled = false;
+        transform.position = new Vector2(transform.position.x, transform.position.y - 0.175f);
+        animator.SetBool("isDead", true);
+        Destroy(gameObject, 0.5f);
+    }
 }

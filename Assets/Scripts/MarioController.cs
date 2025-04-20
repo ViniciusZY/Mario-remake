@@ -1,34 +1,65 @@
 using UnityEngine;
 
+
+
 public class MarioController : MonoBehaviour
 {
+    private Transform transform;
     private Rigidbody2D rb;
     private float movement;
+    private Animator animator;
 
     public float speed = 5f;
     public float jumpForce = 10f;
 
     private bool isGrounded;
+    private bool isJumping;
     public LayerMask groundLayer;
-    public float raycastDistance = 0.7f;
+    private float raycastDistance = 0.7f;
+    private float raycastWidth;
+    private BoxCollider2D boxCollider;
+
+    private int ignoreGroundedFrames = 0;
 
 
     void Start()
     {
+        transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
+        raycastWidth = boxCollider.size.x / 2f * transform.localScale.x + 0.014f;
+        Debug.Log("Raycast Width: " + raycastWidth);
         isGrounded = false;
+
     }
 
     void Update()
     {
-        isGrounded = IsGrounded();
         movement = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(movement * speed, rb.linearVelocity.y);
+        if (movement != 0) transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (ignoreGroundedFrames > 0)
+        {
+            ignoreGroundedFrames--;
+            isGrounded = false;
+        }
+        else
+        {
+            isGrounded = IsGrounded();
+        }
+        isJumping = Input.GetButtonDown("Jump") && isGrounded;
+        if (isJumping)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            ignoreGroundedFrames = 2;
         }
+
+        animator.SetBool("isRunning", movement != 0);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isGrounded", isGrounded);
+
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -54,18 +85,29 @@ public class MarioController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, raycastDistance, groundLayer);
-        return hit.collider != null;
+        Vector2 center = transform.position;
+        Vector2 left = center + Vector2.left * raycastWidth;
+        Vector2 right = center + Vector2.right * raycastWidth;
+
+        return
+            Physics2D.Raycast(center, Vector2.down, raycastDistance, groundLayer) ||
+            Physics2D.Raycast(left, Vector2.down, raycastDistance, groundLayer) ||
+            Physics2D.Raycast(right, Vector2.down, raycastDistance, groundLayer);
     }
 
     private void MarioWasHit()
     {
         Debug.Log("Mario morreu!");
+        animator.SetBool("isDead", true);
     }
 
     private void MarioKilledEnemy(Collision2D collision)
     {
-        Destroy(collision.gameObject);
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
+        EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
+        if (enemy != null)
+        {
+            enemy.Die();
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
+        }
     }
 }
