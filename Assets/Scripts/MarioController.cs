@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 
@@ -6,21 +8,24 @@ public class MarioController : MonoBehaviour
 {
     private Transform transform;
     private Rigidbody2D rb;
-    private float movement;
+    private BoxCollider2D boxCollider;
     private Animator animator;
 
+    private float movement;
     public float speed = 5f;
     public float jumpForce = 10f;
     public bool isBig = false;
 
     private bool isGrounded;
     private bool isJumping;
+    private bool isDead = false;
+    private bool reachedFlag = false;
     public LayerMask groundLayer;
     private float raycastDistance = 0.7f;
     private float raycastWidth;
-    private BoxCollider2D boxCollider;
-
     private int ignoreGroundedFrames = 0;
+
+    public Transform castleEntryPoint;
 
 
     void Start()
@@ -30,13 +35,14 @@ public class MarioController : MonoBehaviour
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         raycastWidth = boxCollider.size.x / 2f * transform.localScale.x + 0.014f;
-        Debug.Log("Raycast Width: " + raycastWidth);
         isGrounded = false;
 
     }
 
     void Update()
     {
+        if (isDead || reachedFlag) return;
+
         movement = Input.GetAxis("Horizontal");
         rb.linearVelocity = new Vector2(movement * speed, rb.linearVelocity.y);
         if (movement != 0) transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
@@ -84,6 +90,15 @@ public class MarioController : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("FlagPole") && !reachedFlag)
+        {
+            reachedFlag = true;
+            StartCoroutine(FlagSequence());
+        }
+    }
+
     private bool IsGrounded()
     {
         Vector2 center = transform.position;
@@ -98,9 +113,46 @@ public class MarioController : MonoBehaviour
 
     private void MarioWasHit()
     {
-        Debug.Log("Mario morreu!");
-        animator.SetBool("isDead", true);
+        Die();
     }
+
+    private void Die()
+    {
+        StartCoroutine(DeathSequence());
+    }
+
+    private IEnumerator DeathSequence()
+    {
+        isDead = true;
+        rb.linearVelocity = Vector2.zero;
+        boxCollider.enabled = false;
+
+        animator.SetBool("isDead", true);
+
+        rb.linearVelocity = new Vector2(0, 10f);
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private IEnumerator FlagSequence()
+    {
+        rb.linearVelocity = Vector2.zero;
+        animator.SetTrigger("ClimbFlag");
+
+        yield return new WaitForSeconds(1.2f); // tempo de descida
+
+        animator.SetBool("isRunning", true);
+        Vector3 dest = new Vector3(castleEntryPoint.position.x, transform.position.y, 0);
+
+        while (Vector3.Distance(transform.position, dest) > 0.05f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, dest, 2f * Time.deltaTime);
+            yield return null;
+        }
+    }
+
 
     private void MarioKilledEnemy(Collision2D collision)
     {
