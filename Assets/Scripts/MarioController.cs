@@ -139,14 +139,14 @@ public class MarioController : MonoBehaviour
     private IEnumerator FlagSequence()
     {
         rb.linearVelocity = Vector2.zero;
-        animator.SetTrigger("ClimbFlag");
+        animator.SetBool("isClimbing",true);
 
         yield return new WaitForSeconds(1.2f); // tempo de descida
 
-        animator.SetBool("isRunning", true);
-        Vector3 dest = new Vector3(castleEntryPoint.position.x, transform.position.y, 0);
+        animator.SetBool("isClimbing", false);
+        Vector3 dest = new Vector3(castleEntryPoint.position.x +2f, castleEntryPoint.position.y-2f, 0);
 
-        while (Vector3.Distance(transform.position, dest) > 0.05f)
+        while (transform.position.x < castleEntryPoint.position.x+2f)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, 2f * Time.deltaTime);
             yield return null;
