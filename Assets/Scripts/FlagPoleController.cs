@@ -1,15 +1,14 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class FlagPoleController : MonoBehaviour
 {
     public GameObject flag;
+    private Transform flagTransform;
     void Start()
     {
-
-    }
-
-    void Update()
-    {
+        flagTransform = flag.GetComponent<Transform>();
 
     }
 
@@ -17,7 +16,19 @@ public class FlagPoleController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            StartCoroutine(MoveFlagDown());
+        }
+    }
 
+    private IEnumerator MoveFlagDown()
+    {
+        float targetY = flagTransform.position.y - 7.7f;
+        float speed = 7f; 
+
+        while (flagTransform.position.y > targetY)
+        {
+            flagTransform.position = new Vector3(flagTransform.position.x, flagTransform.position.y - speed * Time.deltaTime, flagTransform.position.z);
+            yield return null;
         }
     }
 }
