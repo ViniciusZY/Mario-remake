@@ -41,6 +41,7 @@ public class BrickScript : MonoBehaviour
     {
         if (!isBouncing)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.bumpSound);
             if (marioController.isBig)
             {
                 BreakBlock();
@@ -54,6 +55,7 @@ public class BrickScript : MonoBehaviour
 
     void BreakBlock()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.brickBreakSound);
         Instantiate(brickParticles, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

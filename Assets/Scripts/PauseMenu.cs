@@ -18,20 +18,21 @@ public class PauseMenu : MonoBehaviour
 
     public void PauseGame()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.pauseSound);
         pausePanel.SetActive(true);
-        Time.timeScale = 0; // Congela o jogo
+        Time.timeScale = 0; 
     }
 
     public void ResumeGame()
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.pauseSound);
         pausePanel.SetActive(false);
-        Time.timeScale = 1; // Retoma o jogo
+        Time.timeScale = 1; 
     }
 
     public void LoadMainMenu()
     {
         Time.timeScale = 1;
-        // Aqui você pode carregar a cena do menu principal. Por enquanto, pode ser uma cena placeholder.
         SceneManager.LoadScene("MainMenu");
     }
 }

@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class MarioController : MonoBehaviour
 {
+    public GameObject mario;
     private Transform transform;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider;
@@ -59,8 +60,7 @@ public class MarioController : MonoBehaviour
         isJumping = Input.GetButtonDown("Jump") && isGrounded;
         if (isJumping)
         {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            ignoreGroundedFrames = 2;
+            Jump();
         }
 
         animator.SetBool("isRunning", movement != 0);
@@ -97,6 +97,18 @@ public class MarioController : MonoBehaviour
             reachedFlag = true;
             StartCoroutine(FlagSequence());
         }
+        if (other.CompareTag("Goal"))
+        {
+            mario.SetActive(false);
+        }
+    }
+
+
+    private void Jump()
+    {
+            AudioManager.instance.PlaySFX(isBig ? AudioManager.instance.bigJumpSound : AudioManager.instance.jumpSound);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            ignoreGroundedFrames = 2;
     }
 
     private bool IsGrounded()
@@ -113,7 +125,16 @@ public class MarioController : MonoBehaviour
 
     private void MarioWasHit()
     {
-        Die();
+        if (isBig)
+        {
+            isBig = false;
+            AudioManager.instance.PlaySFX(AudioManager.instance.powerDownSound);
+            animator.SetBool("isBig", false);
+        }
+        else
+        {
+            Die();
+        }
     }
 
     private void Die()
@@ -123,6 +144,7 @@ public class MarioController : MonoBehaviour
 
     private IEnumerator DeathSequence()
     {
+        AudioManager.instance.PlayMusic(AudioManager.instance.marioDiesMusic);
         isDead = true;
         rb.linearVelocity = Vector2.zero;
         boxCollider.enabled = false;
@@ -131,7 +153,7 @@ public class MarioController : MonoBehaviour
 
         rb.linearVelocity = new Vector2(0, 10f);
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
 
         SceneManager.LoadScene("MainMenu");
     }
@@ -142,6 +164,8 @@ public class MarioController : MonoBehaviour
         animator.SetBool("isClimbing",true);
 
         yield return new WaitForSeconds(1.2f); // tempo de descida
+
+        AudioManager.instance.PlayMusic(AudioManager.instance.victoryMusic);
 
         animator.SetBool("isClimbing", false);
         Vector3 dest = new Vector3(castleEntryPoint.position.x +2f, castleEntryPoint.position.y-2f, 0);
@@ -160,6 +184,7 @@ public class MarioController : MonoBehaviour
         if (enemy != null)
         {
             enemy.Die();
+            AudioManager.instance.PlaySFX(AudioManager.instance.stompSound);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
         }
     }

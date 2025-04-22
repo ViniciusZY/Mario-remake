@@ -22,6 +22,7 @@ public class FlagPoleController : MonoBehaviour
 
     private IEnumerator MoveFlagDown()
     {
+        AudioManager.instance.PlayMusic(AudioManager.instance.flagSound);
         float targetY = flagTransform.position.y - 7.7f;
         float speed = 7f; 
 

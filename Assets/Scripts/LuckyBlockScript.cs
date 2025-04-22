@@ -35,6 +35,7 @@ public class LuckyBlockScript : MonoBehaviour
     {
         if (!isBouncing)
         {
+            AudioManager.instance.PlaySFX(AudioManager.instance.bumpSound);
             animator.SetBool("wasHit", true);
             StartCoroutine(Bounce());
         }
