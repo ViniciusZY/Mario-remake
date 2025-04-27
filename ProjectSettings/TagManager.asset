@@ -8,6 +8,7 @@ TagManager:
   - FlagPole
   - Goal
   - LeftLimit
+  - DownLimit
   layers:
   - Default
   - TransparentFX
