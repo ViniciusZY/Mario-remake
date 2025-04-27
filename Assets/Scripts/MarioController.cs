@@ -27,6 +27,9 @@ public class MarioController : MonoBehaviour
     private int ignoreGroundedFrames = 0;
 
     public Transform castleEntryPoint;
+    private bool isTouchingLeftLimit = false;
+
+
 
 
     void Start()
@@ -45,8 +48,16 @@ public class MarioController : MonoBehaviour
         if (isDead || reachedFlag) return;
 
         movement = Input.GetAxis("Horizontal");
+        if (isTouchingLeftLimit && movement < 0)
+        {
+            movement = 0;
+        }
+
         rb.linearVelocity = new Vector2(movement * speed, rb.linearVelocity.y);
-        if (movement != 0) transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
+        if (movement != 0)
+        {
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
+        }
 
         if (ignoreGroundedFrames > 0)
         {
@@ -57,6 +68,7 @@ public class MarioController : MonoBehaviour
         {
             isGrounded = IsGrounded();
         }
+
         isJumping = Input.GetButtonDown("Jump") && isGrounded;
         if (isJumping)
         {
@@ -80,11 +92,13 @@ public class MarioController : MonoBehaviour
                 if (Vector2.Dot(normal, Vector2.left) > 0.9f || Vector2.Dot(normal, Vector2.right) > 0.9f || Vector2.Dot(normal, Vector2.down) > 0.9f)
                 {
                     MarioWasHit();
+                    return;
                 }
                 // Colisão na face inferior
-                else if (Vector2.Dot(normal, Vector2.up) > 0.9f)
+                if (Vector2.Dot(normal, Vector2.up) > 0.9f)
                 {
                     MarioKilledEnemy(collision);
+                    return;
                 }
             }
         }
@@ -101,14 +115,25 @@ public class MarioController : MonoBehaviour
         {
             mario.SetActive(false);
         }
+        if (other.CompareTag("LeftLimit"))
+        {
+            isTouchingLeftLimit = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("LeftLimit"))
+        {
+            isTouchingLeftLimit = false;
+        }
     }
 
 
     private void Jump()
     {
-            AudioManager.instance.PlaySFX(isBig ? AudioManager.instance.bigJumpSound : AudioManager.instance.jumpSound);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            ignoreGroundedFrames = 2;
+        AudioManager.instance.PlaySFX(isBig ? AudioManager.instance.bigJumpSound : AudioManager.instance.jumpSound);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        ignoreGroundedFrames = 2;
     }
 
     private bool IsGrounded()
@@ -139,6 +164,7 @@ public class MarioController : MonoBehaviour
 
     private void Die()
     {
+        GameManager.instance.LoseLife();
         StartCoroutine(DeathSequence());
     }
 
@@ -154,23 +180,21 @@ public class MarioController : MonoBehaviour
         rb.linearVelocity = new Vector2(0, 10f);
 
         yield return new WaitForSeconds(3f);
-
-        SceneManager.LoadScene("MainMenu");
     }
 
     private IEnumerator FlagSequence()
     {
         rb.linearVelocity = Vector2.zero;
-        animator.SetBool("isClimbing",true);
+        animator.SetBool("isClimbing", true);
 
         yield return new WaitForSeconds(1.2f); // tempo de descida
 
         AudioManager.instance.PlayMusic(AudioManager.instance.victoryMusic);
 
         animator.SetBool("isClimbing", false);
-        Vector3 dest = new Vector3(castleEntryPoint.position.x +2f, castleEntryPoint.position.y-2f, 0);
+        Vector3 dest = new Vector3(castleEntryPoint.position.x + 2f, castleEntryPoint.position.y - 2f, 0);
 
-        while (transform.position.x < castleEntryPoint.position.x+2f)
+        while (transform.position.x < castleEntryPoint.position.x + 2f)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, 2f * Time.deltaTime);
             yield return null;
@@ -180,6 +204,7 @@ public class MarioController : MonoBehaviour
 
     private void MarioKilledEnemy(Collision2D collision)
     {
+        GameManager.instance.AddScore(100);
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {

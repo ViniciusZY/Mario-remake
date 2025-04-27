@@ -38,7 +38,7 @@ public class EnemyController : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 0;
         boxCollider.enabled = false;
-        transform.position = new Vector2(transform.position.x, transform.position.y - 0.175f);
+        transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
         animator.SetBool("isDead", true);
         Destroy(gameObject, 0.5f);
     }

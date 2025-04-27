@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - FlagPole
   - Goal
+  - LeftLimit
   layers:
   - Default
   - TransparentFX
