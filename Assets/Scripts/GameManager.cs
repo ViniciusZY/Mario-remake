@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
 
     private TextMeshProUGUI scoreText;
     private int score = 0;
+    public Transform scoreCanvas;
+    public GameObject floatingScorePrefab;
 
     void Awake()
     {
@@ -50,6 +52,24 @@ public class GameManager : MonoBehaviour
         UpdateLivesUI();
         UpdateScoreUI();
     }
+    public void OnEnemyKilled(Vector2 worldPosition, int scoreValue)
+    {
+        AddScore(scoreValue);
+
+        if (floatingScorePrefab != null && scoreCanvas != null)
+        {
+            GameObject scorePopup = Instantiate(floatingScorePrefab, scoreCanvas);
+            RectTransform popupRect = scorePopup.GetComponent<RectTransform>();
+
+            // converte world → local Canvas e aplica
+            Vector3 localPos = scoreCanvas.InverseTransformPoint(worldPosition);
+            popupRect.localPosition = localPos;
+
+            scorePopup.GetComponent<FloatingScore>().SetScore(scoreValue);
+        }
+    }
+
+
 
     void UpdateLivesUI()
     {

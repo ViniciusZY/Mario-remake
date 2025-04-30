@@ -176,7 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a5bed42706002e4b853eba570d0b512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floatingScorePrefab: {fileID: 4968458050770336174, guid: 5f9abe9a12fecf34db65015fde2ce8ab, type: 3}
   speed: 1.8
+  scoreValue: 100
 --- !u!95 &2126846412789836942
 Animator:
   serializedVersion: 7

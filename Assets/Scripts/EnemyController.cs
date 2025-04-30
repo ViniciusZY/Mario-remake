@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     private Rigidbody2D rb;
     private float direction = -1;
     public float speed = 1.8f;
+    public int scoreValue = 100;
 
     void Start()
     {
@@ -40,6 +41,7 @@ public class EnemyController : MonoBehaviour
         boxCollider.enabled = false;
         transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
         animator.SetBool("isDead", true);
+        GameManager.instance.OnEnemyKilled(transform.position, scoreValue);
         Destroy(gameObject, 0.5f);
     }
 }

@@ -208,7 +208,7 @@ public class MarioController : MonoBehaviour
 
     private void MarioKilledEnemy(Collision2D collision)
     {
-        GameManager.instance.AddScore(100);
+
         EnemyController enemy = collision.gameObject.GetComponent<EnemyController>();
         if (enemy != null)
         {
