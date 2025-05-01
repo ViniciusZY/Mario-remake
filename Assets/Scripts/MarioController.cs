@@ -13,8 +13,17 @@ public class MarioController : MonoBehaviour
     private Animator animator;
 
     private float movement;
+
+    [Header("Movement")]
     public float speed = 5f;
-    public float jumpForce = 10f;
+
+    [Header("Jump")]
+    public float initialJumpForce = 10f;
+    public float extraJumpForce = 5f;
+    public float maxJumpHoldTime = 0.3f;
+    private float jumpTimeCounter;
+
+    [Header("Extra")]
     public bool isBig = false;
 
     private bool isGrounded;
@@ -59,6 +68,16 @@ public class MarioController : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
         }
 
+        CheckJumpInput();
+
+        animator.SetBool("isRunning", movement != 0);
+        animator.SetBool("isJumping", isJumping);
+        animator.SetBool("isGrounded", isGrounded);
+
+    }
+
+    private void CheckJumpInput()
+    {
         if (ignoreGroundedFrames > 0)
         {
             ignoreGroundedFrames--;
@@ -67,18 +86,20 @@ public class MarioController : MonoBehaviour
         else
         {
             isGrounded = IsGrounded();
+            if (isGrounded) { isJumping = false; }
         }
 
-        isJumping = Input.GetButtonDown("Jump") && isGrounded;
-        if (isJumping)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
 
-        animator.SetBool("isRunning", movement != 0);
-        animator.SetBool("isJumping", isJumping);
-        animator.SetBool("isGrounded", isGrounded);
+        if (Input.GetButton("Jump") && isJumping && jumpTimeCounter > 0)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce + extraJumpForce);
+        }
 
+        jumpTimeCounter -= Time.deltaTime;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -136,7 +157,12 @@ public class MarioController : MonoBehaviour
     private void Jump()
     {
         AudioManager.instance.PlaySFX(isBig ? AudioManager.instance.bigJumpSound : AudioManager.instance.jumpSound);
-        rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+
+        isJumping = true;
+
+        jumpTimeCounter = maxJumpHoldTime;
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce);
+
         ignoreGroundedFrames = 2;
     }
 
@@ -214,7 +240,7 @@ public class MarioController : MonoBehaviour
         {
             enemy.Die();
             AudioManager.instance.PlaySFX(AudioManager.instance.stompSound);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce / 2);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce * 1.2f);
         }
     }
 }
