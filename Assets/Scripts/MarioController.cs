@@ -264,17 +264,19 @@ public class MarioController : MonoBehaviour
         Vector3 start = transform.localScale;
         Vector3 end = new Vector3(start.x, start.y * 1.2f, start.z);
         float t = 0f;
+
         while (t < growDuration)
         {
             transform.localScale = Vector3.Lerp(start, end, t / growDuration);
             t += Time.deltaTime;
             yield return null;
         }
+        animator.SetTrigger("Grow");
         transform.localScale = end;
         raycastDistance = 0.8f;
 
         isInvincible = false;
-        animator.SetBool("isBig", true);
+
     }
 
     public IEnumerator PowerDown()
@@ -286,16 +288,17 @@ public class MarioController : MonoBehaviour
         Vector3 start = transform.localScale;
         Vector3 end = new Vector3(start.x, start.y / 1.2f, start.z);
         float t = 0f;
+
         while (t < growDuration)
         {
             transform.localScale = Vector3.Lerp(start, end, t / growDuration);
             t += Time.deltaTime;
             yield return null;
         }
+        animator.SetTrigger("PowerDown");
         transform.localScale = end;
         raycastDistance = 0.7f;
 
-        animator.SetBool("isBig", false);
         isInvincible = false;
     }
 }
