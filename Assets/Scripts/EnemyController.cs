@@ -41,7 +41,7 @@ public class EnemyController : MonoBehaviour
         boxCollider.enabled = false;
         transform.position = new Vector2(transform.position.x, transform.position.y - 0.25f);
         animator.SetBool("isDead", true);
-        GameManager.instance.OnEnemyKilled(transform.position, scoreValue);
+        GameManager.instance.OnScoreGain(transform.position, scoreValue);
         Destroy(gameObject, 0.5f);
     }
 }

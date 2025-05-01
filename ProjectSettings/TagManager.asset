@@ -9,6 +9,7 @@ TagManager:
   - Goal
   - LeftLimit
   - DownLimit
+  - PowerUp
   layers:
   - Default
   - TransparentFX

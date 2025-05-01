@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: bffeb4fc498cc3b4d858e2015e570f45
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1255358982633879394
+    second: NES - Super Mario Bros - Items Objects and NPCs_0
+  - first:
+      213: -2930324589267881101
+    second: NES - Super Mario Bros - Items Objects and NPCs_1
+  - first:
+      213: 7510442240493032280
+    second: NES - Super Mario Bros - Items Objects and NPCs_2
+  - first:
+      213: -6998933646070126521
+    second: NES - Super Mario Bros - Items Objects and NPCs_3
+  - first:
+      213: 5535647912582597196
+    second: NES - Super Mario Bros - Items Objects and NPCs_4
+  - first:
+      213: 1215157729120985937
+    second: NES - Super Mario Bros - Items Objects and NPCs_5
+  - first:
+      213: -2367404335762444559
+    second: NES - Super Mario Bros - Items Objects and NPCs_6
+  - first:
+      213: -2360945398472559315
+    second: NES - Super Mario Bros - Items Objects and NPCs_7
+  - first:
+      213: 6278002735850459622
+    second: NES - Super Mario Bros - Items Objects and NPCs_8
+  - first:
+      213: -7465878942881609286
+    second: NES - Super Mario Bros - Items Objects and NPCs_9
+  - first:
+      213: -5235823043108399338
+    second: NES - Super Mario Bros - Items Objects and NPCs_10
+  - first:
+      213: 4738577612463043636
+    second: NES - Super Mario Bros - Items Objects and NPCs_11
+  - first:
+      213: -6444738274855740855
+    second: NES - Super Mario Bros - Items Objects and NPCs_12
+  - first:
+      213: 9163867988960475633
+    second: NES - Super Mario Bros - Items Objects and NPCs_13
+  - first:
+      213: 687252285538362392
+    second: NES - Super Mario Bros - Items Objects and NPCs_14
+  - first:
+      213: -8037221961595299319
+    second: NES - Super Mario Bros - Items Objects and NPCs_15
+  - first:
+      213: 7018602270955010916
+    second: NES - Super Mario Bros - Items Objects and NPCs_16
+  - first:
+      213: -6149575240923967365
+    second: NES - Super Mario Bros - Items Objects and NPCs_17
+  - first:
+      213: -8397164787037911536
+    second: NES - Super Mario Bros - Items Objects and NPCs_18
+  - first:
+      213: 4446505920363293012
+    second: NES - Super Mario Bros - Items Objects and NPCs_19
+  - first:
+      213: -285984880124504202
+    second: NES - Super Mario Bros - Items Objects and NPCs_20
+  - first:
+      213: -4250050847965434292
+    second: NES - Super Mario Bros - Items Objects and NPCs_21
+  - first:
+      213: -8068068338258222167
+    second: NES - Super Mario Bros - Items Objects and NPCs_22
+  - first:
+      213: 8781324364922918843
+    second: NES - Super Mario Bros - Items Objects and NPCs_23
+  - first:
+      213: 6220028739455639312
+    second: NES - Super Mario Bros - Items Objects and NPCs_24
+  - first:
+      213: -7057220099860847354
+    second: NES - Super Mario Bros - Items Objects and NPCs_25
+  - first:
+      213: -2940559338973440858
+    second: NES - Super Mario Bros - Items Objects and NPCs_26
+  - first:
+      213: -9129398354593986929
+    second: NES - Super Mario Bros - Items Objects and NPCs_27
+  - first:
+      213: 8858692624888954084
+    second: NES - Super Mario Bros - Items Objects and NPCs_28
+  - first:
+      213: 8987868126660840146
+    second: NES - Super Mario Bros - Items Objects and NPCs_29
+  - first:
+      213: -1968606083439622119
+    second: NES - Super Mario Bros - Items Objects and NPCs_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 16384
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 93
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e98038e08a1149ee0800000000000000
+      internalID: -1255358982633879394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 93
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3737814cf456557d0800000000000000
+      internalID: -2930324589267881101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_2
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 93
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8531daafc637a3860800000000000000
+      internalID: 7510442240493032280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_3
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 89
+        width: 18
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 748e57b4eeacede90800000000000000
+      internalID: -6998933646070126521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_4
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 93
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4a4e17827292dc40800000000000000
+      internalID: 5535647912582597196
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_5
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 97
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 153a356348b1dd010800000000000000
+      internalID: 1215157729120985937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_6
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 97
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1fee827bc4a452fd0800000000000000
+      internalID: -2367404335762444559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_7
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 93
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2533fd3bac3c3fd0800000000000000
+      internalID: -2360945398472559315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_8
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 89
+        width: 17
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e11c49d932ff1750800000000000000
+      internalID: 6278002735850459622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 67
+        width: 25
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ab9097948aed36890800000000000000
+      internalID: -7465878942881609286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 67
+        width: 34
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61718b0deae9657b0800000000000000
+      internalID: -5235823043108399338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_11
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 67
+        width: 50
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4347a738b3fc2c140800000000000000
+      internalID: 4738577612463043636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_12
+      rect:
+        serializedVersion: 2
+        x: 122
+        y: 67
+        width: 50
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94a1cd84fa0bf86a0800000000000000
+      internalID: -6444738274855740855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_13
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 63
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f9ff8a32699c2f70800000000000000
+      internalID: 9163867988960475633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_14
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 63
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 814e69eff4c998900800000000000000
+      internalID: 687252285538362392
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_15
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90ad42e753d067090800000000000000
+      internalID: -8037221961595299319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_16
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 46bf50c4495176160800000000000000
+      internalID: 7018602270955010916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_17
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b70903576e158aaa0800000000000000
+      internalID: -6149575240923967365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_18
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016cf24cd17477b80800000000000000
+      internalID: -8397164787037911536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_19
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 459ece2739925bd30800000000000000
+      internalID: 4446505920363293012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_20
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 677db09444af70cf0800000000000000
+      internalID: -285984880124504202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_21
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 4
+        width: 18
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4e2ca18549c405c0800000000000000
+      internalID: -4250050847965434292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_22
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 33
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3ea82c796780090800000000000000
+      internalID: -8068068338258222167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_23
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 3
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb796b40cf78dd970800000000000000
+      internalID: 8781324364922918843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_24
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 3
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01f59f3fe2bf15650800000000000000
+      internalID: 6220028739455639312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_25
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 3
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6052c0eb5b7bf0e90800000000000000
+      internalID: -7057220099860847354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_26
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 3
+        width: 16
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a4d7876cd80137d0800000000000000
+      internalID: -2940559338973440858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_27
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 4
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86c36de09cdd4180800000000000000
+      internalID: -9129398354593986929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_28
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 4
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ecf0e8c10660fa70800000000000000
+      internalID: 8858692624888954084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_29
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 4
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dacca101725bbc70800000000000000
+      internalID: 8987868126660840146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: NES - Super Mario Bros - Items Objects and NPCs_30
+      rect:
+        serializedVersion: 2
+        x: 244
+        y: 0
+        width: 16
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 91888ed723b1ea4e0800000000000000
+      internalID: -1968606083439622119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      NES - Super Mario Bros - Items Objects and NPCs_0: -1255358982633879394
+      NES - Super Mario Bros - Items Objects and NPCs_1: -2930324589267881101
+      NES - Super Mario Bros - Items Objects and NPCs_10: -5235823043108399338
+      NES - Super Mario Bros - Items Objects and NPCs_11: 4738577612463043636
+      NES - Super Mario Bros - Items Objects and NPCs_12: -6444738274855740855
+      NES - Super Mario Bros - Items Objects and NPCs_13: 9163867988960475633
+      NES - Super Mario Bros - Items Objects and NPCs_14: 687252285538362392
+      NES - Super Mario Bros - Items Objects and NPCs_15: -8037221961595299319
+      NES - Super Mario Bros - Items Objects and NPCs_16: 7018602270955010916
+      NES - Super Mario Bros - Items Objects and NPCs_17: -6149575240923967365
+      NES - Super Mario Bros - Items Objects and NPCs_18: -8397164787037911536
+      NES - Super Mario Bros - Items Objects and NPCs_19: 4446505920363293012
+      NES - Super Mario Bros - Items Objects and NPCs_2: 7510442240493032280
+      NES - Super Mario Bros - Items Objects and NPCs_20: -285984880124504202
+      NES - Super Mario Bros - Items Objects and NPCs_21: -4250050847965434292
+      NES - Super Mario Bros - Items Objects and NPCs_22: -8068068338258222167
+      NES - Super Mario Bros - Items Objects and NPCs_23: 8781324364922918843
+      NES - Super Mario Bros - Items Objects and NPCs_24: 6220028739455639312
+      NES - Super Mario Bros - Items Objects and NPCs_25: -7057220099860847354
+      NES - Super Mario Bros - Items Objects and NPCs_26: -2940559338973440858
+      NES - Super Mario Bros - Items Objects and NPCs_27: -9129398354593986929
+      NES - Super Mario Bros - Items Objects and NPCs_28: 8858692624888954084
+      NES - Super Mario Bros - Items Objects and NPCs_29: 8987868126660840146
+      NES - Super Mario Bros - Items Objects and NPCs_3: -6998933646070126521
+      NES - Super Mario Bros - Items Objects and NPCs_30: -1968606083439622119
+      NES - Super Mario Bros - Items Objects and NPCs_4: 5535647912582597196
+      NES - Super Mario Bros - Items Objects and NPCs_5: 1215157729120985937
+      NES - Super Mario Bros - Items Objects and NPCs_6: -2367404335762444559
+      NES - Super Mario Bros - Items Objects and NPCs_7: -2360945398472559315
+      NES - Super Mario Bros - Items Objects and NPCs_8: 6278002735850459622
+      NES - Super Mario Bros - Items Objects and NPCs_9: -7465878942881609286
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

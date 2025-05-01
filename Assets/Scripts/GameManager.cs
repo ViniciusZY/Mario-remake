@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
         scoreCanvas = GameObject.Find("WorldCanvas")?.transform;
     }
-    public void OnEnemyKilled(Vector2 worldPosition, int scoreValue)
+    public void OnScoreGain(Vector2 worldPosition, int scoreValue)
     {
         AddScore(scoreValue);
         if (floatingScorePrefab != null && scoreCanvas != null)

@@ -23,9 +23,13 @@ public class MarioController : MonoBehaviour
     public float maxJumpHoldTime = 0.3f;
     private float jumpTimeCounter;
 
-    [Header("Extra")]
+    [Header("Power-Up")]
+    public float growDuration = 0.2f;
+    public float invincibleDuration = 10f;
     public bool isBig = false;
+    private bool isInvincible = false;
 
+    [Header("Extra")]
     private bool isGrounded;
     private bool isJumping;
     private bool isDead = false;
@@ -47,7 +51,8 @@ public class MarioController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-        raycastWidth = boxCollider.size.x / 2f * transform.localScale.x + 0.014f;
+        raycastWidth = boxCollider.size.x / 2f * transform.localScale.x + 0.01f;
+        raycastDistance = 0.7f;
         isGrounded = false;
 
     }
@@ -163,7 +168,7 @@ public class MarioController : MonoBehaviour
         jumpTimeCounter = maxJumpHoldTime;
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce);
 
-        ignoreGroundedFrames = 2;
+        ignoreGroundedFrames = 10;
     }
 
     private bool IsGrounded()
@@ -180,11 +185,10 @@ public class MarioController : MonoBehaviour
 
     private void MarioWasHit()
     {
+        if (isInvincible) return;
         if (isBig)
         {
-            isBig = false;
-            AudioManager.instance.PlaySFX(AudioManager.instance.powerDownSound);
-            animator.SetBool("isBig", false);
+            StartCoroutine(PowerDown());
         }
         else
         {
@@ -242,5 +246,56 @@ public class MarioController : MonoBehaviour
             AudioManager.instance.PlaySFX(AudioManager.instance.stompSound);
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce * 1.2f);
         }
+    }
+
+    public IEnumerator Grow()
+    {
+        if (isBig)
+        {
+            GameManager.instance.OnScoreGain(transform.position, 100);
+            yield break;
+        }
+
+        isInvincible = true;
+        isBig = true;
+
+        AudioManager.instance.PlaySFX(AudioManager.instance.powerUpSound);
+
+        Vector3 start = transform.localScale;
+        Vector3 end = new Vector3(start.x, start.y * 1.2f, start.z);
+        float t = 0f;
+        while (t < growDuration)
+        {
+            transform.localScale = Vector3.Lerp(start, end, t / growDuration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = end;
+        raycastDistance = 0.8f;
+
+        isInvincible = false;
+        animator.SetBool("isBig", true);
+    }
+
+    public IEnumerator PowerDown()
+    {
+        isInvincible = true;
+        isBig = false;
+        AudioManager.instance.PlaySFX(AudioManager.instance.powerDownSound);
+
+        Vector3 start = transform.localScale;
+        Vector3 end = new Vector3(start.x, start.y / 1.2f, start.z);
+        float t = 0f;
+        while (t < growDuration)
+        {
+            transform.localScale = Vector3.Lerp(start, end, t / growDuration);
+            t += Time.deltaTime;
+            yield return null;
+        }
+        transform.localScale = end;
+        raycastDistance = 0.7f;
+
+        animator.SetBool("isBig", false);
+        isInvincible = false;
     }
 }
