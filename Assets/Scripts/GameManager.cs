@@ -51,11 +51,11 @@ public class GameManager : MonoBehaviour
         scoreText = GameObject.Find("Score")?.GetComponent<TextMeshProUGUI>();
         UpdateLivesUI();
         UpdateScoreUI();
+        scoreCanvas = GameObject.Find("WorldCanvas")?.transform;
     }
     public void OnEnemyKilled(Vector2 worldPosition, int scoreValue)
     {
         AddScore(scoreValue);
-
         if (floatingScorePrefab != null && scoreCanvas != null)
         {
             GameObject scorePopup = Instantiate(floatingScorePrefab, scoreCanvas);
