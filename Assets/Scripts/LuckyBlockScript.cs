@@ -8,7 +8,10 @@ public class LuckyBlockScript : MonoBehaviour
     private Vector2 originalPosition;
     public float bounceHeight = 0.2f;
     public float bounceDuration = 0.2f;
+    public GameObject itemPrefab;
     private bool isBouncing = false;
+    private bool itemSpawned = false;
+
 
     void Start()
     {
@@ -66,5 +69,20 @@ public class LuckyBlockScript : MonoBehaviour
         }
         transform.position = originalPosition;
         isBouncing = false;
+
+        if (!itemSpawned)
+        {
+            SpawnItem();
+            itemSpawned = true; // Evita que o item seja gerado novamente
+        }
     }
+
+    void SpawnItem()
+    {
+        if (itemPrefab != null)
+        {
+            GameObject item = Instantiate(itemPrefab, transform.position + Vector3.up * 0.5f, Quaternion.identity);
+        }
+    }
+
 }

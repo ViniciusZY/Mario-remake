@@ -28,6 +28,8 @@ public class MarioController : MonoBehaviour
     public float invincibleDuration = 10f;
     public bool isBig = false;
     private bool isInvincible = false;
+    public float growMultiplier;
+    private bool isChangingSize = false;
 
     [Header("Extra")]
     private bool isGrounded;
@@ -62,7 +64,7 @@ public class MarioController : MonoBehaviour
         if (isDead || reachedFlag) return;
 
         movement = Input.GetAxis("Horizontal");
-        if (isTouchingLeftLimit && movement < 0)
+        if (isTouchingLeftLimit && movement < 0 || isChangingSize)
         {
             movement = 0;
         }
@@ -73,7 +75,7 @@ public class MarioController : MonoBehaviour
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
         }
 
-        CheckJumpInput();
+        if (!isChangingSize) { CheckJumpInput(); }
 
         animator.SetBool("isRunning", movement != 0);
         animator.SetBool("isJumping", isJumping);
@@ -137,15 +139,15 @@ public class MarioController : MonoBehaviour
             reachedFlag = true;
             StartCoroutine(FlagSequence());
         }
-        if (other.CompareTag("Goal"))
+        else if (other.CompareTag("Goal"))
         {
             mario.SetActive(false);
         }
-        if (other.CompareTag("LeftLimit"))
+        else if (other.CompareTag("LeftLimit"))
         {
             isTouchingLeftLimit = true;
         }
-        if (other.CompareTag("DownLimit"))
+        else if (other.CompareTag("DownLimit"))
         {
             Die();
         }
@@ -252,17 +254,19 @@ public class MarioController : MonoBehaviour
     {
         if (isBig)
         {
-            GameManager.instance.OnScoreGain(transform.position, 100);
             yield break;
         }
+        GameManager.instance.OnScoreGain(transform.position, 1000);
 
         isInvincible = true;
+        isChangingSize = true;
         isBig = true;
 
         AudioManager.instance.PlaySFX(AudioManager.instance.powerUpSound);
 
         Vector3 start = transform.localScale;
-        Vector3 end = new Vector3(start.x, start.y * 1.2f, start.z);
+        Vector3 end = new Vector3(start.x, start.y * growMultiplier, start.z);
+
         float t = 0f;
 
         while (t < growDuration)
@@ -272,21 +276,24 @@ public class MarioController : MonoBehaviour
             yield return null;
         }
         animator.SetTrigger("Grow");
-        transform.localScale = end;
-        raycastDistance = 0.8f;
+        transform.localScale = start;
+        boxCollider.size = new Vector2(boxCollider.size.x, boxCollider.size.y * growMultiplier);
+        raycastDistance = 0.9f;
 
         isInvincible = false;
+        isChangingSize = false;
 
     }
 
     public IEnumerator PowerDown()
     {
         isInvincible = true;
+        isChangingSize = true;
         isBig = false;
         AudioManager.instance.PlaySFX(AudioManager.instance.powerDownSound);
 
         Vector3 start = transform.localScale;
-        Vector3 end = new Vector3(start.x, start.y / 1.2f, start.z);
+        Vector3 end = new Vector3(start.x, start.y / growMultiplier, start.z);
         float t = 0f;
 
         while (t < growDuration)
@@ -296,9 +303,11 @@ public class MarioController : MonoBehaviour
             yield return null;
         }
         animator.SetTrigger("PowerDown");
-        transform.localScale = end;
+        transform.localScale = start;
+        boxCollider.size = new Vector2(boxCollider.size.x, boxCollider.size.y / growMultiplier);
         raycastDistance = 0.7f;
 
         isInvincible = false;
+        isChangingSize = false;
     }
 }
