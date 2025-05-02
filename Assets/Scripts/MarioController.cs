@@ -221,15 +221,17 @@ public class MarioController : MonoBehaviour
     private IEnumerator FlagSequence()
     {
         rb.linearVelocity = Vector2.zero;
+        animator.SetBool("isRunning", false);
+        animator.SetBool("isJumping", false);
         animator.SetBool("isClimbing", true);
 
-        yield return new WaitForSeconds(1.2f); // tempo de descida
+        yield return new WaitForSeconds(1.2f);
 
         AudioManager.instance.PlayMusic(AudioManager.instance.victoryMusic);
 
         animator.SetBool("isClimbing", false);
         Vector3 dest = new Vector3(castleEntryPoint.position.x + 2f, castleEntryPoint.position.y - 2f, 0);
-
+        animator.SetBool("isRunning", true);
         while (transform.position.x < castleEntryPoint.position.x + 2f)
         {
             transform.position = Vector3.MoveTowards(transform.position, dest, 2f * Time.deltaTime);
@@ -261,6 +263,7 @@ public class MarioController : MonoBehaviour
         isInvincible = true;
         isChangingSize = true;
         isBig = true;
+        animator.SetBool("isBig", true);
 
         AudioManager.instance.PlaySFX(AudioManager.instance.powerUpSound);
 
@@ -290,6 +293,7 @@ public class MarioController : MonoBehaviour
         isInvincible = true;
         isChangingSize = true;
         isBig = false;
+        animator.SetBool("isBig", false);
         AudioManager.instance.PlaySFX(AudioManager.instance.powerDownSound);
 
         Vector3 start = transform.localScale;
