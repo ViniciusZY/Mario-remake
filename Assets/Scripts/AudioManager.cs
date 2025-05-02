@@ -11,9 +11,10 @@ public class AudioManager : MonoBehaviour
     public AudioClip gameOverMusic;
     public AudioClip marioDiesMusic;
     public AudioClip victoryMusic;
+    public AudioClip starMusic;
 
     public AudioClip jumpSound;
-    public AudioClip bigJumpSound;    
+    public AudioClip bigJumpSound;
     public AudioClip bumpSound;
     public AudioClip stompSound;
     public AudioClip coinSound;

@@ -12977,7 +12977,7 @@ Transform:
   m_GameObject: {fileID: 1049049155}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 183, y: -1.829, z: -0.18907066}
+  m_LocalPosition: {x: -4, y: -1.829, z: -0.18907066}
   m_LocalScale: {x: 7.5, y: 7, z: 8}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13004,6 +13004,7 @@ MonoBehaviour:
   invincibleDuration: 10
   isBig: 0
   growMultiplier: 1.4
+  isStarMode: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -71167,6 +71168,7 @@ MonoBehaviour:
   gameOverMusic: {fileID: 8300000, guid: 54163d2ce5d80b64bbaf54e7e2e0d2f2, type: 3}
   marioDiesMusic: {fileID: 8300000, guid: 2ac698f308a66e842bd8164753939061, type: 3}
   victoryMusic: {fileID: 8300000, guid: 4fd71d8d461eec24db00a926f83813ad, type: 3}
+  starMusic: {fileID: 8300000, guid: 608822104467f9a41b581b0d92b08e41, type: 3}
   jumpSound: {fileID: 8300000, guid: 9b9bae6f52c08194db879016b1f96004, type: 3}
   bigJumpSound: {fileID: 8300000, guid: 22be13ab311f9de4abb515d29766206f, type: 3}
   bumpSound: {fileID: 8300000, guid: fde9abbda894b354eb2955f8298ec6f4, type: 3}
@@ -72396,6 +72398,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6183174442876448113, guid: 38cbd930330a56d4d8b976ff1736d4af, type: 3}
+      propertyPath: itemPrefab
+      value: 
+      objectReference: {fileID: 2067260408813434248, guid: 580fc7f6f76c6d147b39288b9fcf4441, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

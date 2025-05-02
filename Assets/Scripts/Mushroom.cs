@@ -59,6 +59,9 @@ public class Mushroom : MonoBehaviour
         float elapsedTime = 0f;
         float duration = 0.5f;
 
+        AudioManager.instance.PlaySFX(AudioManager.instance.powerUpAppearSound);
+
+
         while (elapsedTime < duration)
         {
             transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / duration));

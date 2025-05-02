@@ -12,6 +12,8 @@ public class MarioController : MonoBehaviour
     private BoxCollider2D boxCollider;
     private Animator animator;
 
+    private SpriteRenderer spriteRenderer;
+
     private float movement;
 
     [Header("Movement")]
@@ -30,6 +32,7 @@ public class MarioController : MonoBehaviour
     private bool isInvincible = false;
     public float growMultiplier;
     private bool isChangingSize = false;
+    public bool isStarMode = false;
 
     [Header("Extra")]
     private bool isGrounded;
@@ -51,6 +54,7 @@ public class MarioController : MonoBehaviour
     {
         transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         raycastWidth = boxCollider.size.x / 2f * transform.localScale.x + 0.01f;
@@ -119,6 +123,11 @@ public class MarioController : MonoBehaviour
                 // Colisão na face direita ou esquerda ou superior
                 if (Vector2.Dot(normal, Vector2.left) > 0.9f || Vector2.Dot(normal, Vector2.right) > 0.9f || Vector2.Dot(normal, Vector2.down) > 0.9f)
                 {
+                    if (isStarMode)
+                    {
+                        MarioKilledEnemy(collision);
+                        return;
+                    }
                     MarioWasHit();
                     return;
                 }
@@ -247,8 +256,12 @@ public class MarioController : MonoBehaviour
         if (enemy != null)
         {
             enemy.Die();
-            AudioManager.instance.PlaySFX(AudioManager.instance.stompSound);
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce * 1.2f);
+            if (!isStarMode)
+            {
+                AudioManager.instance.PlaySFX(AudioManager.instance.stompSound);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x, initialJumpForce * 1.2f);
+            }
+
         }
     }
 
@@ -286,6 +299,37 @@ public class MarioController : MonoBehaviour
         isInvincible = false;
         isChangingSize = false;
 
+    }
+
+    public IEnumerator StarMode()
+    {
+        if (isStarMode) yield break;
+        isInvincible = true;
+        isStarMode = true;
+        speed *= 1.5f;
+
+        AudioManager.instance.PlayMusic(AudioManager.instance.starMusic);
+
+        float blinkDuration = 0.15f;
+        float totalDuration = 7.5f;
+        float elapsed = 0f;
+
+        while (elapsed < totalDuration)
+        {
+            spriteRenderer.color = new Color(0.5f, 0.5f, 0.5f);
+            yield return new WaitForSeconds(blinkDuration);
+            spriteRenderer.color = Color.white;
+            yield return new WaitForSeconds(blinkDuration);
+            elapsed += blinkDuration * 2;
+        }
+
+        spriteRenderer.color = Color.white;
+        AudioManager.instance.PlayMusic(AudioManager.instance.backgroundMusic);
+        speed /= 1.5f;
+
+
+        isInvincible = false;
+        isStarMode = false;
     }
 
     public IEnumerator PowerDown()
