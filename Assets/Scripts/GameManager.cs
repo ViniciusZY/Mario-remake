@@ -86,9 +86,6 @@ public class GameManager : MonoBehaviour
 
     public void LoseLife()
     {
-        currentLives--;
-        UpdateLivesUI();
-
         if (currentLives > 0)
         {
             StartCoroutine(RestartLevel());
@@ -108,6 +105,8 @@ public class GameManager : MonoBehaviour
     private IEnumerator RestartLevel()
     {
         yield return new WaitForSeconds(3f);
+        currentLives--;
+        UpdateLivesUI();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -17,7 +17,10 @@ public class MarioController : MonoBehaviour
     private float movement;
 
     [Header("Movement")]
-    public float speed = 5f;
+    public float speed;
+    public float maxSpeed = 7f;
+    public float minSpeed = 4f;
+
 
     [Header("Jump")]
     public float initialJumpForce = 10f;
@@ -52,6 +55,7 @@ public class MarioController : MonoBehaviour
 
     void Start()
     {
+        speed = minSpeed;
         transform = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -77,6 +81,11 @@ public class MarioController : MonoBehaviour
         if (movement != 0)
         {
             transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x) * Mathf.Sign(movement), transform.localScale.y, transform.localScale.z);
+            if (speed < maxSpeed) speed += 0.1f;
+        }
+        else
+        {
+            speed = minSpeed;
         }
 
         if (!isChangingSize) { CheckJumpInput(); }
